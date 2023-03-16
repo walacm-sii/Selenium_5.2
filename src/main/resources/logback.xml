@@ -12,6 +12,11 @@
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>${DEV_HOME}/timeBasedlogFile_${bySecond}.log
         </file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${DEV_HOME}/timeBasedlogFile.%d{yyyy-MM-dd-HH-mm}.zip</fileNamePattern>
+            <maxHistory>3</maxHistory>
+            <totalSizeCap>30KB</totalSizeCap>
+        </rollingPolicy>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} => %relative [%thread] %-5level %logger{35} - %msg%n</pattern>
         </encoder>
